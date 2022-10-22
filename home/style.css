@@ -28,7 +28,10 @@
     font-size: 130px;
     font-family: 'Kaushan Script', cursive;
 }
-
+.banner-text h2{
+    font-size: 100px;
+    font-family: 'Kaushan Script', cursive;
+}
 .salut{
     padding-top: 60px;
 }
