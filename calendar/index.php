@@ -3,20 +3,20 @@
 
 function build_calendar($month, $year) {
     $mysqli = new mysqli('localhost', 'root', 'beatrice1234', 'registration');
-    $stmt = $mysqli->prepare("select * from bookings where MONTH(date) = ? AND YEAR(date) = ?");
-    // $stmt = $mysqli->prepare("select id,fullname from users");
-    $stmt->bind_param('ss', $month, $year);
-    $bookings = array();
-    if($stmt->execute()){
-        $result = $stmt->get_result();
-        if($result->num_rows>0){
-            while($row = $result->fetch_assoc()){
-                $bookings[] = $row['date'];
-            }
+    // $stmt = $mysqli->prepare("select * from bookings where MONTH(date) = ? AND YEAR(date) = ?");
+    // // $stmt = $mysqli->prepare("select id,fullname from users");
+    // $stmt->bind_param('ss', $month, $year);
+    // $bookings = array();
+    // if($stmt->execute()){
+    //     $result = $stmt->get_result();
+    //     if($result->num_rows>0){
+    //         while($row = $result->fetch_assoc()){
+    //             $bookings[] = $row['date'];
+    //         }
             
-            $stmt->close();
-        }
-    }
+    //         $stmt->close();
+    //     }
+    // }
     
     
      // Create array containing abbreviations of days of week.
@@ -104,9 +104,7 @@ function build_calendar($month, $year) {
             $today = $date==date('Y-m-d')? "today" : "";
          if($date<date('Y-m-d')){
              $calendar.="<td><h4>$currentDay</h4> <button class='btn btn-danger btn-xs'>N/A</button>";
-         }elseif(in_array($date, $bookings)){
-             $calendar.="<td class='$today'><h4>$currentDay</h4> <button class='btn btn-danger btn-xs'>Already Booked</button>";
-         }else{
+            }else{
              $calendar.="<td class='$today'><h4>$currentDay</h4> <a href='book.php?date=".$date."' class='btn btn-success btn-xs'>Book</a>";
          }
             
