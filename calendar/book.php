@@ -14,8 +14,32 @@ if(isset($_POST['submit'])){
     $stmt->close();
     $mysqli->close();
 }
+$duration=20;
+$cleanup=0;
+$start="09:00";
+$end="17:00";
 
+function timeslots($duration,$cleanup,$start,$end){
+    $start = new DateTime($start);
+    $end = new DateTime($end);
+    $interval = new DateInterval("PT".$duration."M");
+    $cleanupInterval = new DateInterval("PT".$cleanup."M");
+    $slots = array();
 
+    for($intStart = $start;$intStart<$end;$intStart->add($interval)->add($cleanupInterval)){
+        $endPeriod = clone $intStart;
+        $endPeriod->add($interval);
+        if($endPeriod>$end){
+            break;
+        }
+
+        $slots[] = $intStart->format("H:iA")."-".$endPeriod->format("H:iA");
+
+    }
+
+    return $slots;
+
+}
 
 ?>
 <!doctype html>
@@ -36,20 +60,15 @@ if(isset($_POST['submit'])){
     <div class="container">
         <h1 class="text-center">Book for Date: <?php echo date('m/d/Y', strtotime($date)); ?></h1><hr>
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-               <?php echo isset($msg)?$msg:''; ?>
-                <form action="" method="post" autocomplete="off">
+            <?php $timeslots=timeslots($duration,$cleanup,$start,$end);
+                foreach($timeslots as $ts){
+            ?>
+                <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Name</label>
-                        <input type="text" class="form-control" name="name">
+                        <button class="btn btn-success"><?php echo $ts; ?></button>
                     </div>
-                    <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="email" class="form-control" name="email">
-                    </div>
-                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-                </form>
-            </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
