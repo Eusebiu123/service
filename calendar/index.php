@@ -98,11 +98,14 @@ function build_calendar($month, $year) {
             }elseif($date<date('Y-m-d')){
                 $calendar.="<td><h4>$currentDay</h4> <button class='btn btn-danger btn-xs'>N/A</button>";
             }else{
+
+
                 $totalbookings=checkSlots($mysqli,$date);
             if($totalbookings==24){
                 $calendar.="<td class='$today'><h4>$currentDay</h4> <a href='#' class='btn btn-danger btn-xs'>All Booked</a>";
             }else{
-                $calendar.="<td class='$today'><h4>$currentDay</h4> <a href='book.php?date=".$date."' class='btn btn-success btn-xs'>Book</a>";
+                $availableslots=36-$totalbookings;
+                $calendar.="<td class='$today'><h4>$currentDay</h4> <a href='book.php?date=".$date."' class='btn btn-success btn-xs'>Book</a> <small><i>$availableslots slots left</i></small>";
             }
              
             }
