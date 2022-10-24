@@ -87,6 +87,7 @@ function timeslots($duration,$cleanup,$start,$end){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../home/style.css">
 
     <title></title>
 
@@ -95,6 +96,20 @@ function timeslots($duration,$cleanup,$start,$end){
   </head>
 
   <body>
+
+    <div id="sideNav">
+        <nav>
+            <ul>
+                <li><a href="../home/index.php">HOME</a></li>
+                <li><a href="../login/logout.php">LOG OUT</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="menuBtn">
+        <img src="../home/images/menu.png" id="menu">
+
+    </div>
+
     <div class="container">
         <h1 class="text-center">Booking for resource "<?php echo $resourcename; ?>" Date: <?php echo date('m/d/Y', strtotime($date)); ?></h1><hr>
         <div class="row">
@@ -177,5 +192,29 @@ function timeslots($duration,$cleanup,$start,$end){
         })
     </script>
   </body>
+  <script>
+        var menuBtn = document.getElementById("menuBtn")
+        var sideNav = document.getElementById("sideNav")
+        var menu = document.getElementById("menu")
+
+        sideNav.style.right="-250px";
+
+        menuBtn.onclick=function(){
+            if(sideNav.style.right=="-250px"){
+                sideNav.style.right="0";
+                menu.src = "../home/images/close.png";
+            }
+            else{
+                sideNav.style.right="-250px";
+                menu.src = "../home/images/menu.png";
+            }
+        }
+
+        var scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 1000,
+        speedAsDuration: true
+        });
+
+    </script>
 
 </html>

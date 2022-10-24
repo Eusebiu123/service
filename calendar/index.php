@@ -5,6 +5,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../home/style.css">
     <style>
        @media only screen and (max-width: 760px),
         (min-device-width: 802px) and (max-device-width: 1020px) {
@@ -110,6 +111,18 @@
 </head>
 
 <body>
+<div id="sideNav">
+        <nav>
+            <ul>
+                <li><a href="../home/index.php">HOME</a></li>
+                <li><a href="../login/logout.php">LOG OUT</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="menuBtn">
+        <img src="../home/images/menu.png" id="menu">
+
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -158,5 +171,30 @@ $.ajax({
 
 
 </script>
+
+<script>
+        var menuBtn = document.getElementById("menuBtn")
+        var sideNav = document.getElementById("sideNav")
+        var menu = document.getElementById("menu")
+
+        sideNav.style.right="-250px";
+
+        menuBtn.onclick=function(){
+            if(sideNav.style.right=="-250px"){
+                sideNav.style.right="0";
+                menu.src = "../home/images/close.png";
+            }
+            else{
+                sideNav.style.right="-250px";
+                menu.src = "../home/images/menu.png";
+            }
+        }
+
+        var scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 1000,
+        speedAsDuration: true
+        });
+
+    </script>
 
 </html>

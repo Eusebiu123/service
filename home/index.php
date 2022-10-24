@@ -30,8 +30,8 @@ if (!isset($_SESSION["user_id"])) {
             <p>Dintre toate creațiile mâinilor umane, mașina seamănă cel mai mult cu o creatură vie.</p>
     
             <div class="banner-btn">
-                <a href="#"><span></span>Find Out</a>
-                <a href="#"><span></span> Read More</a>
+                <a href="../calendar/index.php"><span></span>Fa o programare</a>
+                <a href="#"><span></span> Raspunsuri</a>
             </div>
         </div>
     </section>
