@@ -1,9 +1,20 @@
 <?php
 $mysqli = new mysqli('localhost', 'root', 'beatrice1234', 'registration');
 if(isset($_GET['date'])){
+
+    $resourceid=$_GET['resource_id'];
+    $stmt = $mysqli->prepare("select * from resources where id = ?");
+    $stmt->bind_param('i', $resourceid);
+    $stmt->execute();
+    $result=$stmt->get_result();
+    if($result->num_rows>0){
+        $row = $result->fetch_assoc();
+        $resourcename = $row['name'];
+    }
+
     $date = $_GET['date'];
-    $stmt = $mysqli->prepare("select * from bookings where date = ?");
-    $stmt->bind_param('s', $date);
+    $stmt = $mysqli->prepare("select * from bookings where date = ? AND resource_id=?");
+    $stmt->bind_param('si', $date,$resourceid);
     $bookings = array();
     if($stmt->execute()){
         $result = $stmt->get_result();
@@ -11,10 +22,10 @@ if(isset($_GET['date'])){
             while($row = $result->fetch_assoc()){
                 $bookings[] = $row['timeslot'];
             }
-            
-            $stmt->close();
         }
     }
+
+    
 }
 
 if(isset($_POST['submit'])){
@@ -22,15 +33,15 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $timeslot = $_POST['timeslot'];
     
-    $stmt = $mysqli->prepare("select * from bookings where date = ? AND timeslot =?");
-    $stmt->bind_param('ss', $date,$timeslot);
+    $stmt = $mysqli->prepare("select * from bookings where date = ? AND timeslot =? AND resource_id=? ");
+    $stmt->bind_param('ssi', $date,$timeslot,$resourceid);
     if($stmt->execute()){
         $result = $stmt->get_result();
         if($result->num_rows>0){
             $msg = "<div class='alert alert-danger'>Already Booked</div>";
         }else{
-            $stmt = $mysqli->prepare("INSERT INTO bookings (name,timeslot, email, date) VALUES (?,?,?,?)");
-            $stmt->bind_param('ssss', $name,$timeslot, $email, $date);
+            $stmt = $mysqli->prepare("INSERT INTO bookings (name,timeslot, email, date,resource_id) VALUES (?,?,?,?,?)");
+            $stmt->bind_param('ssssi', $name,$timeslot, $email, $date,$resourceid);
             $stmt->execute();
             $msg = "<div class='alert alert-success'>Booking Successfull</div>";
             $bookings[]=$timeslot;
@@ -85,7 +96,7 @@ function timeslots($duration,$cleanup,$start,$end){
 
   <body>
     <div class="container">
-        <h1 class="text-center">Book for Date: <?php echo date('m/d/Y', strtotime($date)); ?></h1><hr>
+        <h1 class="text-center">Booking for resource "<?php echo $resourcename; ?>" Date: <?php echo date('m/d/Y', strtotime($date)); ?></h1><hr>
         <div class="row">
             <div class="col-md-12">
                 <?php echo isset($msg)?$msg:"";?>
