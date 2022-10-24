@@ -46,8 +46,8 @@ if(isset($_POST['submit'])){
         if($result->num_rows>0){
             $msg = "<div class='alert alert-danger'>Already Booked</div>";
         }else{
-            $stmt = $mysqli->prepare("INSERT INTO bookings (name,timeslot, email, date,resource_id) VALUES (?,?,?,?,?)");
-            $stmt->bind_param('ssssi', $name,$timeslot, $email, $date,$resourceid);
+            $stmt = $mysqli->prepare("INSERT INTO bookings (timeslot, email, date,resource_id) VALUES (?,?,?,?)");
+            $stmt->bind_param('sssi',$timeslot, $email, $date,$resourceid);
             $stmt->execute();
             $msg = "<div class='alert alert-success'>Booking Successfull</div>";
             $bookings[]=$timeslot;
@@ -136,7 +136,7 @@ function timeslots($duration,$cleanup,$start,$end){
     </div>
 
     <div class="container">
-        <h1 class="text-center">Booking for resource "<?php echo $resourcename; ?>" Date: <?php echo date('m/d/Y', strtotime($date)); ?></h1><hr>
+        <h1 class="text-center">Booking for <?php echo $resourcename; ?> , date: <?php echo date('m/d/Y', strtotime($date)); ?></h1><hr>
         <div class="row">
             <div class="col-md-12">
                 <?php echo isset($msg)?$msg:"";?>

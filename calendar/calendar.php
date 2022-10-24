@@ -44,7 +44,7 @@ function build_calendar($month, $year,$resourceid) {
     
     $calendar.= "<button class='changemonth btn btn-xs btn-primary' data-month='".date('m', mktime(0, 0, 0, $month+1, 1, $year))."' data-year='".date('Y', mktime(0, 0, 0, $month+1, 1, $year))."'>Next Month</button></center><br>";
     
-    $calendar.="<label>Select Resource</label><select id='resource_select' class='form-control'>";
+    $calendar.="<label>Select Mechanic</label><select id='resource_select' class='form-control'>";
     $stmt = $mysqli->prepare("select * from resources");
     if($stmt->execute()){
         $result = $stmt->get_result();
