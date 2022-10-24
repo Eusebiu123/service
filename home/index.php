@@ -232,7 +232,7 @@ if (!isset($_SESSION["user_id"])) {
             <i class="fa fa-instagram"></i>
             <i class="fa fa-twitter"></i>
             <i class="fa fa-youtube-play"></i>
-            <p>Copyright Easy Tutorials Youtube Channel</p>
+            <p>sebica_p</p>
         </div>
 
     </section>
