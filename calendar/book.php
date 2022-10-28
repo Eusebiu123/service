@@ -36,8 +36,59 @@ if(isset($_POST['submit'])){
     $model = $_POST['model'];
     $piesa = $_POST['piesa'];
     $detalii = $_POST['detalii'];
+    $a=(explode("-",$timeslot)[0]);
+    if($a=='09:00AM')
+    {
+        $nr=9.0;
+    }else if($a=='09:20AM'){
+        $nr=9.2;
+    }else if($a=='09:40AM'){
+        $nr=9.4;
+    }else if($a=='10:00AM'){
+        $nr=10.0;
+    }else if($a=='10:20AM'){
+        $nr=10.2;
+    }else if($a=='10:40AM'){
+        $nr=10.4;
+    }else if($a=='11:00AM'){
+        $nr=11.0;
+    }else if($a=='11:20AM'){
+        $nr=11.2;
+    }else if($a=='11:40AM'){
+        $nr=11.4;
+    }else if($a=='12:00PM'){
+        $nr=12;
+    }else if($a=='12:20PM'){
+        $nr=12.2;
+    }else if($a=='12:40PM'){
+        $nr=12.4;
+    }else if($a=='13:00PM'){
+        $nr=13.0;
+    }else if($a=='13:20PM'){
+        $nr=13.2;
+    }else if($a=='13:40PM'){
+        $nr=13.4;
+    }else if($a=='14:00PM'){
+        $nr=14.0;
+    }else if($a=='14:20PM'){
+        $nr=14.2;
+    }else if($a=='14:40PM'){
+        $nr=14.4;
+    }else if($a=='15:00PM'){
+        $nr=15.0;
+    }else if($a=='15:20PM'){
+        $nr=15.2;
+    }else if($a=='15:40PM'){
+        $nr=15.4;
+    }else if($a=='16:00PM'){
+        $nr=16.0;
+    }else if($a=='16:20PM'){
+        $nr=16.2;
+    }else if($a=='16:40PM'){
+        $nr=16.4;
+    }
     
-    $attachments= $_FILES["attachments"]["name"];
+    // $attachments= $_FILES["attachments"]["name"];
     
     $stmt = $mysqli->prepare("select * from bookings where date = ? AND timeslot =? AND resource_id=? ");
     $stmt->bind_param('ssi', $date,$timeslot,$resourceid);
@@ -46,36 +97,39 @@ if(isset($_POST['submit'])){
         if($result->num_rows>0){
             $msg = "<div class='alert alert-danger'>Already Booked</div>";
         }else{
-            $stmt = $mysqli->prepare("INSERT INTO bookings (timeslot, email, date,resource_id) VALUES (?,?,?,?)");
-            $stmt->bind_param('sssi',$timeslot, $email, $date,$resourceid);
+            $stmt = $mysqli->prepare("INSERT INTO bookings (timeslot, email, date,resource_id,marca,model,piesa,detalii,data,sort) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            $stmt->bind_param('sssissssss',$timeslot, $email, $date,$resourceid,$marca,$model,$piesa,$detalii,$_SESSION['date'],$nr);
             $stmt->execute();
             $msg = "<div class='alert alert-success'>Booking Successfull</div>";
             $bookings[]=$timeslot;
             
         }
     }
-    for ($i=0;$i<count($attachments);$i++){
-        $file_tmp = $_FILES["attachments"]["tmp_name"][$i];
-        $file_name = $_FILES["attachments"]["name"][$i]; 
+    // for ($i=0;$i<count($attachments);$i++){
+    //     $file_tmp = $_FILES["attachments"]["tmp_name"][$i];
+    //     $file_name = $_FILES["attachments"]["name"][$i]; 
 
-        $curdir = getcwd();
-        $stmt = $mysqli->prepare("select id from bookings order by id desc limit 1");
-        if($stmt->execute()){
-            $result = $stmt->get_result();
-            if($result->num_rows>0){
-                while($row = $result->fetch_assoc()){
-                    $ceva = $row['id'];
-                }
-            }
-        }
-    
-        $path=$curdir ."/fisiere/" ."$ceva";
-        if(!file_exists($path)){
-            mkdir($path,0077);
-        }
-        move_uploaded_file($file_tmp, "$path" ."/" . $file_name);
+    //     $curdir = getcwd();
+    //     $stmt = $mysqli->prepare("select id from bookings order by id desc limit 1");
+    //     if($stmt->execute()){
+    //         $result = $stmt->get_result();
+    //         if($result->num_rows>0){
+    //             while($row = $result->fetch_assoc()){
+    //                 $ceva = $row['id'];
+    //             }
+    //         }
+    //     }
+    //     $path=$curdir ."/fisiere";
+    //     if(!file_exists($path)){
+    //         mkdir($path,0077);
+    //     }
+    //     $path=$curdir ."/fisiere/" ."$ceva";
+    //     if(!file_exists($path)){
+    //         mkdir($path,0077);
+    //     }
+    //     move_uploaded_file($file_tmp, "$path" ."/" . $file_name);
   
-    }  
+    // }  
 }
 $duration=20;
 $cleanup=0;
@@ -136,7 +190,7 @@ function timeslots($duration,$cleanup,$start,$end){
     </div>
 
     <div class="container">
-        <h1 class="text-center">Booking for <?php echo $resourcename; ?> , date: <?php echo date('m/d/Y', strtotime($date)); ?></h1><hr>
+        <h1 class="text-center">Booking for <?php echo $resourcename; ?>, date: <?php $_SESSION["date"]=date('Y/m/d', strtotime($date));echo date('m/d/Y', strtotime($date)); ?></h1><hr>
         <div class="row">
             <div class="col-md-12">
                 <?php echo isset($msg)?$msg:"";?>
@@ -198,10 +252,10 @@ function timeslots($duration,$cleanup,$start,$end){
                                 <label for="">Detalii</label>
                                 <input require type="text"  name="detalii" class="form-control">
                            </div> 
-                           <div class="col-6">
+                           <!-- <div class="col-6">
                                 <label for="attachments" class="form-label">Attachments (Multiple) </label>
                                 <input type="file" class="form-control" multiple id="attachments" name="attachments[]" placeholder="name">
-                            </div>
+                            </div> -->
                             
                            <div class="form-group pull-right">
                                 <button class="btn btn-primary" type="submit" name="submit">Submit</button>
