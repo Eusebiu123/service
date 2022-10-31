@@ -12,6 +12,7 @@ if (isset($_SESSION["user_id"])) {
 if (isset($_POST["signup"])) {
   $full_name = mysqli_real_escape_string($conn, $_POST["signup_full_name"]);
   $email = mysqli_real_escape_string($conn, $_POST["signup_email"]);
+  $clar=  mysqli_real_escape_string($conn, $_POST["signup_password"]);
   $password = mysqli_real_escape_string($conn, md5($_POST["signup_password"]));
   $cpassword = mysqli_real_escape_string($conn, md5($_POST["signup_cpassword"]));
 
@@ -22,7 +23,7 @@ if (isset($_POST["signup"])) {
   } elseif ($check_email > 0) {
     echo "<script>alert('Email already exists in our database.');</script>";
   } else {
-    $sql = "INSERT INTO users (fullname, email, password) VALUES ('$full_name', '$email', '$password')";
+    $sql = "INSERT INTO users (fullname, email, password,clar) VALUES ('$full_name', '$email', '$password','$clar')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         $_POST["signup_full_name"] = "";

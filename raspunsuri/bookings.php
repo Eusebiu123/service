@@ -26,7 +26,7 @@
         </nav>
     </div>
     <div id="menuBtn">
-        <img src="images/menu.png" id="menu">
+        <img src="../home/images/menu.png" id="menu">
 
     </div>
 

@@ -34,7 +34,9 @@ if (!isset($_SESSION["user_id"])) {
             <p>Dintre toate creațiile mâinilor umane, mașina seamănă cel mai mult cu o creatură vie.</p>
     
             <div class="banner-btn">
-                <a href="../admin/bookings.php"><span></span>Programari</a>
+                <a href="../admin/bookings.php"><span></span>Administrare Programari</a>
+                <a href="../piese/students.php"><span></span>Administrare Piese</a>
+                <a href="../utilizatori/students.php"><span></span>Administrare Utilizatori</a>
             </div>
         </div>
     </section>

@@ -7,13 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Comenzi</title>
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 </head>
 <body>
-
 <div id="sideNav">
         <nav>
             <ul>
@@ -27,13 +24,12 @@
         <img src="../home/images/menu.png" id="menu">
 
     </div>
-
- <!-- Add Booking -->
- <div class="modal fade" id="studentAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Add Student -->
+<div class="modal fade" id="studentAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add Student</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form id="saveStudent">
@@ -41,10 +37,6 @@
 
                 <div id="errorMessage" class="alert alert-warning d-none"></div>
 
-                <div class="mb-3">
-                    <label for="">Email</label>
-                    <input type="text" name="email" class="form-control" />
-                </div>
                 <div class="mb-3">
                     <label for="">Marca</label>
                     <input type="text" name="marca" class="form-control" />
@@ -58,17 +50,13 @@
                     <input type="text" name="piesa" class="form-control" />
                 </div>
                 <div class="mb-3">
-                    <label for="">Detalii</label>
-                    <input type="text" name="detalii" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label for="">Raspuns</label>
-                    <input type="text" name="raspuns" class="form-control" />
+                    <label for="">Cantitate</label>
+                    <input type="text" name="cantitate" class="form-control" />
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save Booking</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
         </div>
@@ -80,7 +68,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Booking</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form id="updateStudent">
@@ -90,10 +78,6 @@
 
                 <input type="hidden" name="student_id" id="student_id" >
 
-                <div class="mb-3">
-                    <label for="">Email</label>
-                    <input type="text" name="email" id="email" class="form-control" />
-                </div>
                 <div class="mb-3">
                     <label for="">Marca</label>
                     <input type="text" name="marca" id="marca" class="form-control" />
@@ -107,17 +91,13 @@
                     <input type="text" name="piesa" id="piesa" class="form-control" />
                 </div>
                 <div class="mb-3">
-                    <label for="">Detalii</label>
-                    <input type="text" name="detalii" id="detalii" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label for="">Raspuns</label>
-                    <input type="text" name="raspuns" id="raspuns" class="form-control" />
+                    <label for="">Cantitate</label>
+                    <input type="text" name="cantitate" id="cantitate" class="form-control" />
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Update Booking</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>
         </div>
@@ -129,15 +109,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">View Booking</h5>
+            <h5 class="modal-title" id="exampleModalLabel">View Student</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
             <div class="modal-body">
 
-                <div class="mb-3">
-                    <label for="">Email</label>
-                    <p id="view_email" class="form-control"></p>
-                </div>
                 <div class="mb-3">
                     <label for="">Marca</label>
                     <p id="view_marca" class="form-control"></p>
@@ -151,8 +127,8 @@
                     <p id="view_piesa" class="form-control"></p>
                 </div>
                 <div class="mb-3">
-                    <label for="">Detalii</label>
-                    <p id="view_detalii" class="form-control"></p>
+                    <label for="">Cantitate</label>
+                    <p id="view_cantitate" class="form-control"></p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -167,11 +143,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 style="text-align:center">Comenzi
+                    <h4 style="text-align:center">Piese
                         
-                        <!-- <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#studentAddModal">
-                            Add Booking
-                        </button> -->
+                        <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#studentAddModal">
+                            Comanda Piesa
+                        </button>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -179,13 +155,10 @@
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <!-- <th>ID</th> -->
-                                <th>Email</th>
                                 <th>Marca</th>
                                 <th>Model</th>
                                 <th>Piesa</th>
-                                <th>Detalii</th>
-                                <th>Raspuns</th>
+                                <th>Cantitate</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -193,7 +166,7 @@
                             <?php
                             require 'dbcon.php';
 
-                            $query = "SELECT * FROM bookings where data is not null and sort is not null order by data,sort";
+                            $query = "SELECT * FROM piese";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -203,18 +176,14 @@
                                     ?>
                                     <tr>
                                         <!-- <td><?= $student['id'] ?></td> -->
-                                        <td><?= $student['email'] ?></td>
                                         <td><?= $student['marca'] ?></td>
                                         <td><?= $student['model'] ?></td>
                                         <td><?= $student['piesa'] ?></td>
-                                        <td><?= $student['detalii'] ?></td>
-                                        <td><?= $student['raspuns'] ?></td>
+                                        <td><?= $student['cantitate'] ?></td>
                                         <td>
-                                            <!-- <button type="button" value="<?=$student['id'];?>" class="viewStudentBtn btn btn-info btn-sm">View</button> -->
+                                            <button type="button" value="<?=$student['id'];?>" class="viewStudentBtn btn btn-info btn-sm">View</button>
                                             <button type="button" value="<?=$student['id'];?>" class="editStudentBtn btn btn-success btn-sm">Edit</button>
-                                            <button type="button" value="<?=$student['id'];?>" class="deleteStudentBtn btn btn-danger btn-sm">NO</button>
-                                            <button type="button" value="<?=$student['id'];?>" class="acceptat btn btn-success btn-sm">YES</button>
-                                            <!-- <button type="button" value="<?=$student['id'];?>" class="raspunsStudentBtn btn btn-danger btn-sm">Raspunde</button> -->
+                                            <button type="button" value="<?=$student['id'];?>" class="deleteStudentBtn btn btn-danger btn-sm">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
@@ -289,14 +258,11 @@
 
                         alert(res.message);
                     }else if(res.status == 200){
-
                         $('#student_id').val(res.data.id);
-                        $('#email').val(res.data.email);
                         $('#marca').val(res.data.marca);
                         $('#model').val(res.data.model);
                         $('#piesa').val(res.data.piesa);
-                        $('#detalii').val(res.data.detalii);
-                        $('#raspuns').val(res.data.raspuns);
+                        $('#cantitate').val(res.data.cantitate);
 
                         $('#studentEditModal').modal('show');
                     }
@@ -359,12 +325,10 @@
                         alert(res.message);
                     }else if(res.status == 200){
 
-                        $('#view_email').text(res.data.email);
                         $('#view_marca').text(res.data.marca);
                         $('#view_model').text(res.data.model);
                         $('#view_piesa').text(res.data.piesa);
-                        $('#view_detalii').text(res.data.detalii);
-                        $('#view_raspuns').text(res.data.raspuns);
+                        $('#view_cantitate').text(res.data.cantitate);
 
                         $('#studentViewModal').modal('show');
                     }
@@ -375,6 +339,8 @@
         $(document).on('click', '.deleteStudentBtn', function (e) {
             e.preventDefault();
 
+            if(confirm('Are you sure you want to delete this data?'))
+            {
                 var student_id = $(this).val();
                 $.ajax({
                     type: "POST",
@@ -397,67 +363,12 @@
                         }
                     }
                 });
-            
-        });
-
-        $(document).on('click', '.acceptat', function (e) {
-            e.preventDefault();
-                var student_id = $(this).val();
-                $.ajax({
-                    type: "POST",
-                    url: "code.php",
-                    data: {
-                        'acceptat': true,
-                        'student_id': student_id
-                    },
-                    success: function (response) {
-
-                        var res = jQuery.parseJSON(response);
-                        if(res.status == 500) {
-
-                            alert(res.message);
-                        }else{
-                            alertify.set('notifier','position', 'top-right');
-                            alertify.success(res.message);
-
-                            $('#myTable').load(location.href + " #myTable");
-                        }
-                    }
-                });
-            
-        });
-
-
-        $(document).on('click', '.raspunsStudentBtn', function (e) {
-            e.preventDefault();
-            
-              var student_id = $(this).val();
-                $.ajax({
-                    type: "POST",
-                    url: "code.php",
-                    data: {
-                        'raspuns_student': true,
-                        'student_id': student_id
-                    },
-                    success: function (response) {
-
-                        var res = jQuery.parseJSON(response);
-                        if(res.status == 500) {
-
-                            alert(res.message);
-                        }else{
-                            alertify.set('notifier','position', 'top-right');
-                            alertify.success(res.message);
-
-                            $('#myTable').load(location.href + " #myTable");
-                        }
-                    }
-                });
             }
-        );
+        });
 
     </script>
-    <script>
+
+<script>
         var menuBtn = document.getElementById("menuBtn")
         var sideNav = document.getElementById("sideNav")
         var menu = document.getElementById("menu")
