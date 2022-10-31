@@ -9,12 +9,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>Comenzi</title>
-
+    <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 </head>
 <body>
 
+<div id="sideNav">
+        <nav>
+            <ul>
+                <li><a href="../home/admin.php">HOME</a></li>
+                <li><a href="../login/logout.php">LOG OUT</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+    <div id="menuBtn">
+        <img src="images/menu.png" id="menu">
 
+    </div>
+
+ <!-- Add Booking -->
  <div class="modal fade" id="studentAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -155,9 +169,9 @@
                 <div class="card-header">
                     <h4 style="text-align:center">Comenzi
                         
-                        <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#studentAddModal">
+                        <!-- <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#studentAddModal">
                             Add Booking
-                        </button>
+                        </button> -->
                     </h4>
                 </div>
                 <div class="card-body">
@@ -165,7 +179,7 @@
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <!-- <th>ID</th> -->
                                 <th>Email</th>
                                 <th>Marca</th>
                                 <th>Model</th>
@@ -188,7 +202,7 @@
                                 {
                                     ?>
                                     <tr>
-                                        <td><?= $student['id'] ?></td>
+                                        <!-- <td><?= $student['id'] ?></td> -->
                                         <td><?= $student['email'] ?></td>
                                         <td><?= $student['marca'] ?></td>
                                         <td><?= $student['model'] ?></td>
@@ -196,9 +210,11 @@
                                         <td><?= $student['detalii'] ?></td>
                                         <td><?= $student['raspuns'] ?></td>
                                         <td>
-                                            <button type="button" value="<?=$student['id'];?>" class="viewStudentBtn btn btn-info btn-sm">View</button>
+                                            <!-- <button type="button" value="<?=$student['id'];?>" class="viewStudentBtn btn btn-info btn-sm">View</button> -->
                                             <button type="button" value="<?=$student['id'];?>" class="editStudentBtn btn btn-success btn-sm">Edit</button>
-                                            <button type="button" value="<?=$student['id'];?>" class="deleteStudentBtn btn btn-danger btn-sm">Delete</button>
+                                            <button type="button" value="<?=$student['id'];?>" class="deleteStudentBtn btn btn-danger btn-sm">NO</button>
+                                            <button type="button" value="<?=$student['id'];?>" class="acceptat btn btn-success btn-sm">YES</button>
+                                            <!-- <button type="button" value="<?=$student['id'];?>" class="raspunsStudentBtn btn btn-danger btn-sm">Raspunde</button> -->
                                         </td>
                                     </tr>
                                     <?php
@@ -359,8 +375,6 @@
         $(document).on('click', '.deleteStudentBtn', function (e) {
             e.preventDefault();
 
-            if(confirm('Are you sure you want to delete this data?'))
-            {
                 var student_id = $(this).val();
                 $.ajax({
                     type: "POST",
@@ -383,7 +397,87 @@
                         }
                     }
                 });
+            
+        });
+
+        $(document).on('click', '.acceptat', function (e) {
+            e.preventDefault();
+                var student_id = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "code.php",
+                    data: {
+                        'acceptat': true,
+                        'student_id': student_id
+                    },
+                    success: function (response) {
+
+                        var res = jQuery.parseJSON(response);
+                        if(res.status == 500) {
+
+                            alert(res.message);
+                        }else{
+                            alertify.set('notifier','position', 'top-right');
+                            alertify.success(res.message);
+
+                            $('#myTable').load(location.href + " #myTable");
+                        }
+                    }
+                });
+            
+        });
+
+
+        $(document).on('click', '.raspunsStudentBtn', function (e) {
+            e.preventDefault();
+            
+              var student_id = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "code.php",
+                    data: {
+                        'raspuns_student': true,
+                        'student_id': student_id
+                    },
+                    success: function (response) {
+
+                        var res = jQuery.parseJSON(response);
+                        if(res.status == 500) {
+
+                            alert(res.message);
+                        }else{
+                            alertify.set('notifier','position', 'top-right');
+                            alertify.success(res.message);
+
+                            $('#myTable').load(location.href + " #myTable");
+                        }
+                    }
+                });
             }
+        );
+
+    </script>
+    <script>
+        var menuBtn = document.getElementById("menuBtn")
+        var sideNav = document.getElementById("sideNav")
+        var menu = document.getElementById("menu")
+
+        sideNav.style.right="-250px";
+
+        menuBtn.onclick=function(){
+            if(sideNav.style.right=="-250px"){
+                sideNav.style.right="0";
+                menu.src = "../home/images/close.png";
+            }
+            else{
+                sideNav.style.right="-250px";
+                menu.src = "../home/images/menu.png";
+            }
+        }
+
+        var scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 1000,
+        speedAsDuration: true
         });
 
     </script>

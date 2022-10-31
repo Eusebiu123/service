@@ -28,17 +28,13 @@ if (!isset($_SESSION["user_id"])) {
     <section id="banner">
         <img src="images/logo.jpg" class="logo">
         <div class="banner-text">
-            <h1><?php echo "Bine ai venit ",$_SESSION["name"],"!"; ?></h1>
+            <h1><?php echo "ADMIN" ?></h1>
             <?php echo "<br>" ?>
             <h2>SERVICE AUTO</h2>
             <p>Dintre toate creațiile mâinilor umane, mașina seamănă cel mai mult cu o creatură vie.</p>
     
             <div class="banner-btn">
-                <a href="../calendar/index.php"><span></span>Fa o programare</a>
-                <a href="../raspunsuri/bookings.php">
-                    <span></span> 
-                    Raspunsuri 
-                </a>
+                <a href="../admin/bookings.php"><span></span>Programari</a>
             </div>
         </div>
     </section>

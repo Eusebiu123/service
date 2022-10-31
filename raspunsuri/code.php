@@ -74,7 +74,7 @@ if(isset($_POST['update_student']))
     {
         $res = [
             'status' => 200,
-            'message' => 'Updated Successfully'
+            'message' => 'Booking Updated Successfully'
         ];
         echo json_encode($res);
         return;
@@ -125,57 +125,14 @@ if(isset($_POST['delete_student']))
 {
     $student_id = mysqli_real_escape_string($con, $_POST['student_id']);
 
-    $query = "SELECT * FROM bookings WHERE id = '$student_id'";
-    $query_run = mysqli_query($con, $query);
-    $row  = mysqli_fetch_assoc($query_run);
-    $id=$row['id'];$email=$row['email'];$marca=$row['marca'];$model=$row['model'];$ora=$row['sort'];
-    $piesa=$row['piesa'];$detalii=$row['detalii'];$raspuns=$row['raspuns'];$data=$row['data'];$timeslot=$row['timeslot'];
-    $query = "INSERT INTO raspunsuri (email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat) VALUES ('$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',0)";
-    $query_run = mysqli_query($con, $query);
-
-    $query = "DELETE FROM bookings WHERE id = '$student_id'";
+    $query = "DELETE FROM bookings WHERE id='$student_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
     {
         $res = [
             'status' => 200,
-            'message' => 'Programare respinsa'
-        ];
-        echo json_encode($res);
-        return;
-    }
-    else
-    {
-        $res = [
-            'status' => 500,
-            'message' => 'Booking Not Deleted'
-        ];
-        echo json_encode($res);
-        return;
-    }
-}
-
-if(isset($_POST['acceptat']))
-{
-    $student_id = mysqli_real_escape_string($con, $_POST['student_id']);
-
-    $query = "SELECT * FROM bookings WHERE id = '$student_id'";
-    $query_run = mysqli_query($con, $query);
-    $row  = mysqli_fetch_assoc($query_run);
-    $id=$row['id'];$email=$row['email'];$marca=$row['marca'];$model=$row['model'];$ora=$row['sort'];
-    $piesa=$row['piesa'];$detalii=$row['detalii'];$raspuns=$row['raspuns'];$data=$row['data'];$timeslot=$row['timeslot'];
-    $query = "INSERT INTO raspunsuri (email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat) VALUES ('$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',1)";
-    $query_run = mysqli_query($con, $query);
-
-    $query = "DELETE FROM bookings WHERE id = '$student_id'";
-    $query_run = mysqli_query($con, $query);
-
-    if($query_run)
-    {
-        $res = [
-            'status' => 200,
-            'message' => 'Programare acceptata'
+            'message' => 'Booking Deleted Successfully'
         ];
         echo json_encode($res);
         return;
