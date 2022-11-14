@@ -160,6 +160,11 @@ if(isset($_POST['acceptat']))
 {
     $student_id = mysqli_real_escape_string($con, $_POST['student_id']);
 
+
+    $query = "UPDATE bookings SET vazut=1 WHERE id = '$student_id'";
+    $query_run = mysqli_query($con, $query);
+
+
     $query = "SELECT * FROM bookings WHERE id = '$student_id'";
     $query_run = mysqli_query($con, $query);
     $row  = mysqli_fetch_assoc($query_run);
@@ -168,8 +173,8 @@ if(isset($_POST['acceptat']))
     $query = "INSERT INTO raspunsuri (email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat) VALUES ('$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',1)";
     $query_run = mysqli_query($con, $query);
 
-    $query = "DELETE FROM bookings WHERE id = '$student_id'";
-    $query_run = mysqli_query($con, $query);
+    // $query = "DELETE FROM bookings WHERE id = '$student_id'";
+    // $query_run = mysqli_query($con, $query);
 
     if($query_run)
     {

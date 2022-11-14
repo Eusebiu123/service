@@ -202,7 +202,7 @@
                                     <?php
                             require 'dbcon.php';
 
-                            $query = "SELECT * FROM bookings where data is not null and sort is not null order by data,sort";
+                            $query = "SELECT * FROM bookings where data is not null and sort is not null and vazut=0 order by data,sort";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
