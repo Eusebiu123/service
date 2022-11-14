@@ -27,6 +27,7 @@
                 position: absolute;
                 top: -9999px;
                 left: -9999px;
+
             }
 
             tr {
@@ -111,6 +112,9 @@
 </head>
 
 <body>
+
+
+
 <div id="sideNav">
         <nav>
             <ul>
@@ -132,6 +136,7 @@
             </div>
         </div>
     </div>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script>

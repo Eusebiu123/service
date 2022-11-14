@@ -37,7 +37,7 @@ function build_calendar($month, $year,$resourceid) {
     
     
     $calendar = "<table class='table table-bordered'>";
-    $calendar .= "<center><h2>$monthName $year</h2>";
+    $calendar .= "<center><h2 >$monthName $year</h2>";
     $calendar.= "<button class='changemonth btn btn-xs btn-primary' data-month='".date('m', mktime(0, 0, 0, $month-1, 1, $year))."' data-year='".date('Y', mktime(0, 0, 0, $month-1, 1, $year))."'>Previous Month</button> ";
     
     $calendar.= " <button class='changemonth btn btn-xs btn-primary' id='current_month' data-month='".date('m')."' data-year='".date('Y')."'>Current Month</button> ";
