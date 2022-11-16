@@ -77,7 +77,7 @@ if (!isset($_SESSION["user_id"])) {
                         <i class="fa fa-shield"></i>
                     </div>
                     <div class="feature-text">
-                        <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                        <p>Our staff has been working in the field of cars for over 15 years and throughout these years we have only had positive experiences.</p>
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@ if (!isset($_SESSION["user_id"])) {
                         <i class="fa fa-check-square-o"></i>
                     </div>
                     <div class="feature-text">
-                        <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                        <p>We offer you the possibility to make an online appointment according to your possibilities.</p>
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@ if (!isset($_SESSION["user_id"])) {
                         <i class="fa fa-inr"></i>
                     </div>
                     <div class="feature-text">
-                        <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                        <p>Of all the services in our city and in our area, our services are the best in relation to price-quality.</p>
                     </div>
                 </div>
             </div>
@@ -125,36 +125,36 @@ if (!isset($_SESSION["user_id"])) {
                 <img src="images/img1.png">
                 <div class="overlay"></div>
                 <div class="service-desc">
-                    <h3>Hair Styling</h3>
+                    <h3>Auto diagnosis</h3>
                     <hr>
-                    <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                    <p>A good operation of your car is closely related to the safety of you and your family, and car diagnosis is the responsibility of every driver. A periodic check can not only save you from a lot of technical problems, but it can save your life, which is priceless.</p>
                 </div>
             </div>
             <div class="single-service">
                 <img src="images/img2.jpg">
                 <div class="overlay"></div>
                 <div class="service-desc">
-                    <h3>Beard Trim</h3>
+                    <h3>Ana</h3>
                     <hr>
-                    <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                    <p>Ana is the only female person in our staff. Usually women want her services.</p>
                 </div>
             </div>
             <div class="single-service">
                 <img src="images/img3.jpg">
                 <div class="overlay"></div>
                 <div class="service-desc">
-                    <h3>Hair Cut</h3>
+                    <h3>Car equipment</h3>
                     <hr>
-                    <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                    <p>Equipment, tools and machinery for the professional use of car service units specialized in the repair and maintenance of vehicles up to 3.5 tons.</p>
                 </div>
             </div>
             <div class="single-service">
                 <img src="images/img4.jpg">
                 <div class="overlay"></div>
                 <div class="service-desc">
-                    <h3>Dry Shampoo</h3>
+                    <h3>Car service tool features</h3>
                     <hr>
-                    <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                    <p>These equipment are specific to the automotive field and intended for repairing the engine, suspensions and wheels, specific equipment in tinsmithing, equipment for lifting and suspending vehicles and their parts, equipment for maintenance such as greasers, lubricators, rectifiers and battery chargers, etc.</p>
                 </div>
             </div>
         </div>
@@ -182,7 +182,7 @@ if (!isset($_SESSION["user_id"])) {
                         <small>@kennorman</small>
                     </div>
                 </div>
-                <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                <p>The best service! I am totally satisfied with the services they offer. Congratulations!</p>
             </div>
             <div class="testimonial-col">
                 <div class="user">
@@ -192,7 +192,7 @@ if (!isset($_SESSION["user_id"])) {
                         <small>@liarakarian</small>
                     </div>
                 </div>
-                <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                <p>The best service! I am totally satisfied with the services they offer. Congratulations!</p>
             </div>
             <div class="testimonial-col">
                 <div class="user">
@@ -202,7 +202,7 @@ if (!isset($_SESSION["user_id"])) {
                         <small>@rickydaniel</small>
                     </div>
                 </div>
-                <p>Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.Omul e bun nu gluma..numa prostiii face.</p>
+                <p>The best service! I am totally satisfied with the services they offer. Congratulations!</p>
             </div>
         </div>
 
@@ -222,13 +222,13 @@ if (!isset($_SESSION["user_id"])) {
         <div class="footer-row">
             <div class="footer-left">
                 <h1>Opening Hours</h1>
-                <p><i class="fa fa-clock-o"></i>Monday to Friday - 9am to 9pm</p>
-                <p><i class="fa fa-clock-o"></i>Saturday and Sunday - 8am to 11pm</p>
+                <p><i class="fa fa-clock-o"></i>Monday to Friday - 9am to 5pm</p>
+                <p><i class="fa fa-clock-o"></i>Saturday and Sunday - Closed </p>
             </div>
             <div class="footer-right">
                 <h1>Get In Touch</h1>
-                <p>#30 abc Colony, xyz City IN<i class="fa fa-map-marker"></i></p>
-                <p>example@website.com<i class="fa fa-paper-plane"></i></p>
+                <p>Jud Iasi, oras Iasi, str Stefan nr 125<i class="fa fa-map-marker"></i></p>
+                <p>service@website.com<i class="fa fa-paper-plane"></i></p>
                 <p>+01 123456789<i class="fa fa-phone"></i></p>
             </div>
         </div>
@@ -283,7 +283,7 @@ if (!isset($_SESSION["user_id"])) {
   if($mesaj=='daaa'){
   echo "
   alertify.set('notifier', 'position', 'top-right');
-  alertify.success('Cineva a facut o programare');"; 
+  alertify.success('Ai programari la care nu ai raspuns!');"; 
   }
   ?>
   
