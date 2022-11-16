@@ -51,7 +51,7 @@
                                         <th>Piesa</th>
                                         <th>Data</th>
                                         <th>Interval</th>
-                                        <th>Detalii</th>
+                                        <th>Pret Estimativ</th>
                                         <th>Raspuns</th>
                                         <th>Acceptat</th>
                                     </tr>
@@ -59,8 +59,11 @@
                                 <tbody>
                                     <?php
                             require 'dbcon.php';
+                            
+                            $curr_data=date("y-m-d");
+                                
 
-                            $query = "SELECT * FROM raspunsuri where email='$email' and data is not null and ora is not null and raspuns is not null order by data,ora";
+                            $query = "SELECT * FROM raspunsuri where email='$email' and data is not null and ora is not null and raspuns is not null and data>'$curr_data'  order by data,ora";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -77,7 +80,7 @@
                                         <td><?= $student['piesa'] ?></td>
                                         <td><?= $student['data'] ?></td>
                                         <td><?= $student['timeslot'] ?></td>
-                                        <td><?= $student['detalii'] ?></td>
+                                        <td><?= $student['pret'] ?></td>
                                         <td><?= $student['raspuns'] ?></td>
                                         <td><?= $student['acceptat'] ?></td>
 

@@ -273,9 +273,10 @@ if (!isset($_SESSION["user_id"])) {
 
 <script type="text/javascript">
   <?php 
-  $query = "SELECT * FROM bookings where vazut=0";
+  $curr_data=date("y-m-d");
+  $query = "SELECT * FROM bookings where vazut=0 and data>'$curr_data'";
   $query_run = mysqli_query($con, $query);
-  if($query_run){
+  if(mysqli_num_rows($query_run) > 0){
       $mesaj='daaa';
   }else{
       $mesaj='nuuu';

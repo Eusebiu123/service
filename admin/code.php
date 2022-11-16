@@ -170,11 +170,23 @@ if(isset($_POST['acceptat']))
     $row  = mysqli_fetch_assoc($query_run);
     $id=$row['id'];$email=$row['email'];$marca=$row['marca'];$model=$row['model'];$ora=$row['sort'];
     $piesa=$row['piesa'];$detalii=$row['detalii'];$raspuns=$row['raspuns'];$data=$row['data'];$timeslot=$row['timeslot'];
+    $indice=1;
+    if($marca=='lamborghini'||$marca=='ferrari' || $marca=='porsche')
+    {
+        $indice=3;
+    }
+    if($marca=='bmw'||$marca=='mercedes'||$marca=='audi')
+    {
+        $indice=2;
+    }
+    $pret=rand(101,190)*$indice+45;
+
     $query = "INSERT INTO raspunsuri (email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat) VALUES ('$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',1)";
     $query_run = mysqli_query($con, $query);
 
-    // $query = "DELETE FROM bookings WHERE id = '$student_id'";
-    // $query_run = mysqli_query($con, $query);
+    $query = "UPDATE piese set cantitate=cantitate-1 where marca='$marca' and model='$model' and piesa='$piesa'";
+    $query_run = mysqli_query($con, $query);
+
 
     if($query_run)
     {

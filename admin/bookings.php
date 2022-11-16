@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Comenzi</title>
+    <title>Programari</title>
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
 </head>
@@ -176,7 +176,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 style="text-align:center">Comenzi
+                            <h4 style="text-align:center">Programari
 
                                 <!-- <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#studentAddModal">
                             Add Booking
@@ -201,8 +201,8 @@
                                 <tbody>
                                     <?php
                             require 'dbcon.php';
-
-                            $query = "SELECT * FROM bookings where data is not null and sort is not null and vazut=0 order by data,sort";
+                            $curr_data=date("y-m-d");
+                            $query = "SELECT * FROM bookings where data is not null and sort is not null and vazut=0 and data>'$curr_data' order by data,sort";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
