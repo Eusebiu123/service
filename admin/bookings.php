@@ -131,7 +131,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update Booking</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <!-- <button type="submit" class="btn btn-primary">Update-nu</button>
+                            <button type="button" value="<?=$student['id'];?>" class="acceptat btn btn-success btn-sm">Update-da</button> -->
                         </div>
                     </form>
                 </div>
@@ -197,6 +199,7 @@
                                         <th>Model</th>
                                         <th>Piesa</th>
                                         <th>Detalii</th>
+                                        <th>Avem in Stoc</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -213,6 +216,16 @@
                             {
                                 foreach($query_run as $student)
                                 {
+                                    $marca=$student['marca'];$model=$student['model'];$piesa=$student['piesa'];
+                                    $query = "SELECT * FROM piese where marca='$marca' and  model='$model' and piesa='$piesa'";
+                                    $query_run = mysqli_query($con, $query);
+                                    if(mysqli_num_rows($query_run) > 0)
+                                    {
+                                        $avem='Da';
+                                    }
+                                    else{
+                                        $avem='Nu';
+                                    }
                                     ?>
                                     <tr>
                                         <!-- <td><?= $student['id'] ?></td> -->
@@ -221,15 +234,16 @@
                                         <td><?= $student['model'] ?></td>
                                         <td><?= $student['piesa'] ?></td>
                                         <td><?= $student['detalii'] ?></td>
+                                        <td><?= $avem ?></td>
                                         <!-- <td><?= $student['raspuns'] ?></td> -->
                                         <td>
                                             <!-- <button type="button" value="<?=$student['id'];?>" class="viewStudentBtn btn btn-info btn-sm">View</button> -->
                                             <button type="button" value="<?=$student['id'];?>"
-                                                class="editStudentBtn btn btn-success btn-sm">Edit</button>
+                                                class="editStudentBtn btn btn-warning btn-sm">Raspunde</button>
                                             <button type="button" value="<?=$student['id'];?>"
-                                                class="deleteStudentBtn btn btn-danger btn-sm">NO</button>
+                                                class="deleteStudentBtn btn btn-danger btn-sm">Respinge</button>
                                             <button type="button" value="<?=$student['id'];?>"
-                                                class="acceptat btn btn-success btn-sm">YES</button>
+                                                class="acceptat btn btn-success btn-sm">Accepta</button>
                                             <!-- <button type="button" value="<?=$student['id'];?>" class="raspunsStudentBtn btn btn-danger btn-sm">Raspunde</button> -->
                                         </td>
                                     </tr>
