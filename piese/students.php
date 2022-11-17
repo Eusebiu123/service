@@ -45,19 +45,19 @@
 
                             <div class="mb-3">
                                 <label for="">Marca</label>
-                                <input type="text" name="marca" class="form-control" />
+                                <input type="text" name="marca" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Model</label>
-                                <input type="text" name="model" class="form-control" />
+                                <input type="text" name="model" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Piesa</label>
-                                <input type="text" name="piesa" class="form-control" />
+                                <input type="text" name="piesa" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Cantitate</label>
-                                <input type="text" name="cantitate" class="form-control" />
+                                <input type="text" name="cantitate" autocomplete="off" class="form-control" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -192,8 +192,8 @@
                                         <td>
                                             <button type="button" value="<?=$student['id'];?>"
                                                 class="viewStudentBtn btn btn-info btn-sm">View</button>
-                                            <button type="button" value="<?=$student['id'];?>"
-                                                class="editStudentBtn btn btn-success btn-sm">Edit</button>
+                                            <!-- <button type="button" value="<?=$student['id'];?>"
+                                                class="editStudentBtn btn btn-success btn-sm">Edit</button> -->
                                             <button type="button" value="<?=$student['id'];?>"
                                                 class="deleteStudentBtn btn btn-danger btn-sm">Delete</button>
                                         </td>
@@ -219,6 +219,7 @@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script>
+        
     $(document).on('submit', '#saveStudent', function(e) {
         e.preventDefault();
 

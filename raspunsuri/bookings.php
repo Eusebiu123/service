@@ -63,14 +63,14 @@
                             $curr_data=date("y-m-d");
                                 
 
-                            $query = "SELECT * FROM raspunsuri where email='$email' and data is not null and ora is not null and raspuns is not null and data>'$curr_data'  order by data,ora";
+                            $query = "SELECT * FROM raspunsuri where email='$email' and data is not null and ora is not null  and raspuns is not null and data>='$curr_data'  order by data,ora";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
                                 foreach($query_run as $student)
                                 {
-                                    $ceva=$student['id'];
+                                    $ceva=$student['email'];
                                     ?>
                                     <tr>
                                         <!-- <td><?= $student['id'] ?></td> -->
@@ -80,7 +80,7 @@
                                         <td><?= $student['piesa'] ?></td>
                                         <td><?= $student['data'] ?></td>
                                         <td><?= $student['timeslot'] ?></td>
-                                        <td><?= $student['pret'] ?></td>
+                                        <td><?= $student['pret'] ?> $</td>
                                         <td><?= $student['raspuns'] ?></td>
                                         <td><?= $student['acceptat'] ?></td>
 
@@ -88,8 +88,8 @@
                                     <?php
                                 }
                             }
-
-                            $query = "UPDATE raspunsuri SET vazut=1 where id=$ceva";
+                            $a=1;
+                            $query = "UPDATE raspunsuri SET vazut='$a' where email='$ceva'";
                             $query_run = mysqli_query($con, $query);
                             ?>
 

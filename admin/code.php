@@ -140,7 +140,7 @@ if(isset($_POST['delete_student']))
     {
         $res = [
             'status' => 200,
-            'message' => 'Programare respinsa'
+            'message' => 'Programare respinsa.'
         ];
         echo json_encode($res);
         return;
@@ -149,7 +149,7 @@ if(isset($_POST['delete_student']))
     {
         $res = [
             'status' => 500,
-            'message' => 'Booking Not Deleted'
+            'message' => 'Booking Not Deleted.'
         ];
         echo json_encode($res);
         return;
@@ -181,7 +181,7 @@ if(isset($_POST['acceptat']))
     }
     $pret=rand(101,190)*$indice+45;
 
-    $query = "INSERT INTO raspunsuri (email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat) VALUES ('$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',1)";
+    $query = "INSERT INTO raspunsuri (email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat,pret) VALUES ('$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',1,$pret)";
     $query_run = mysqli_query($con, $query);
 
     $query = "UPDATE piese set cantitate=cantitate-1 where marca='$marca' and model='$model' and piesa='$piesa'";
@@ -192,7 +192,7 @@ if(isset($_POST['acceptat']))
     {
         $res = [
             'status' => 200,
-            'message' => 'Programare acceptata'
+            'message' => 'Raspuns trimis!'
         ];
         echo json_encode($res);
         return;

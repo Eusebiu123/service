@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
         $nr=16.4;
     }
     
-    // $attachments= $_FILES["attachments"]["name"];
+    
     
     $stmt = $mysqli->prepare("select * from bookings where date = ? AND timeslot =? AND resource_id=? ");
     $stmt->bind_param('ssi', $date,$timeslot,$resourceid);
@@ -105,31 +105,9 @@ if(isset($_POST['submit'])){
             
         }
     }
-    // for ($i=0;$i<count($attachments);$i++){
-    //     $file_tmp = $_FILES["attachments"]["tmp_name"][$i];
-    //     $file_name = $_FILES["attachments"]["name"][$i]; 
+    
 
-    //     $curdir = getcwd();
-    //     $stmt = $mysqli->prepare("select id from bookings order by id desc limit 1");
-    //     if($stmt->execute()){
-    //         $result = $stmt->get_result();
-    //         if($result->num_rows>0){
-    //             while($row = $result->fetch_assoc()){
-    //                 $ceva = $row['id'];
-    //             }
-    //         }
-    //     }
-    //     $path=$curdir ."/fisiere";
-    //     if(!file_exists($path)){
-    //         mkdir($path,0077);
-    //     }
-    //     $path=$curdir ."/fisiere/" ."$ceva";
-    //     if(!file_exists($path)){
-    //         mkdir($path,0077);
-    //     }
-    //     move_uploaded_file($file_tmp, "$path" ."/" . $file_name);
-  
-    // }  
+   
 }
 $duration=20;
 $cleanup=0;
@@ -180,6 +158,7 @@ function timeslots($duration,$cleanup,$start,$end){
         <nav>
             <ul>
                 <li><a href="../home/index.php">HOME</a></li>
+                <li><a href="../calendar/index.php">CALENDAR</a></li>
                 <li><a href="../login/logout.php">LOG OUT</a></li>
             </ul>
         </nav>
@@ -237,25 +216,22 @@ function timeslots($duration,$cleanup,$start,$end){
 
                            <div class="form-group">
                                 <label for="">Marca</label>
-                                <input require type="text"  name="marca" class="form-control">
+                                <input require type="text"  name="marca" autocomplete="off" class="form-control">
                            </div> 
                            <div class="form-group">
                                 <label for="">Model</label>
-                                <input require type="text"  name="model" class="form-control">
+                                <input require type="text"  name="model" autocomplete="off" class="form-control">
                            </div> 
 
                            <div class="form-group">
                                 <label for="">Piesa</label>
-                                <input require type="text"  name="piesa" class="form-control">
+                                <input require type="text"  name="piesa" autocomplete="off" class="form-control">
                            </div> 
                            <div class="form-group">
                                 <label for="">Detalii</label>
-                                <input require type="text"  name="detalii" class="form-control">
+                                <input require type="text"  name="detalii" autocomplete="off" class="form-control">
                            </div> 
-                           <!-- <div class="col-6">
-                                <label for="attachments" class="form-label">Attachments (Multiple) </label>
-                                <input type="file" class="form-control" multiple id="attachments" name="attachments[]" placeholder="name">
-                            </div> -->
+                          
                             
                            <div class="form-group pull-right">
                                 <button class="btn btn-primary" type="submit" name="submit">Submit</button>

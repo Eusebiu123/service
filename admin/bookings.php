@@ -1,3 +1,9 @@
+<?php
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -100,27 +106,27 @@
 
                             <div class="mb-3">
                                 <label for="">Email</label>
-                                <input type="text" name="email" id="email" class="form-control" />
+                                <input type="text" name="email" id="email" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Marca</label>
-                                <input type="text" name="marca" id="marca" class="form-control" />
+                                <input type="text" name="marca" id="marca" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Model</label>
-                                <input type="text" name="model" id="model" class="form-control" />
+                                <input type="text" name="model" id="model" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Piesa</label>
-                                <input type="text" name="piesa" id="piesa" class="form-control" />
+                                <input type="text" name="piesa" id="piesa" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Detalii</label>
-                                <input type="text" name="detalii" id="detalii" class="form-control" />
+                                <input type="text" name="detalii" id="detalii" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Raspuns</label>
-                                <input type="text" name="raspuns" id="raspuns" class="form-control" />
+                                <input type="text" name="raspuns" id="raspuns" autocomplete="off" class="form-control" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -178,9 +184,6 @@
                         <div class="card-header">
                             <h4 style="text-align:center">Programari
 
-                                <!-- <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#studentAddModal">
-                            Add Booking
-                        </button> -->
                             </h4>
                         </div>
                         <div class="card-body">
@@ -194,15 +197,16 @@
                                         <th>Model</th>
                                         <th>Piesa</th>
                                         <th>Detalii</th>
-                                        <!-- <th>Raspuns</th> -->
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                             require 'dbcon.php';
+                        
+
                             $curr_data=date("y-m-d");
-                            $query = "SELECT * FROM bookings where data is not null and sort is not null and vazut=0 and data>'$curr_data' order by data,sort";
+                            $query = "SELECT * FROM bookings where data is not null and sort is not null and vazut=0 and data>='$curr_data' order by data,sort";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)

@@ -1,5 +1,5 @@
 <?php
-
+require 'dbcon.php';
 session_start();
 if (!isset($_SESSION["user_id"])) {
     header("Location: ../login/index.php");
@@ -19,7 +19,7 @@ if (!isset($_SESSION["user_id"])) {
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
 </head>
 <body>
 
@@ -245,7 +245,7 @@ if (!isset($_SESSION["user_id"])) {
 
     </section>
 
-
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script>
         var menuBtn = document.getElementById("menuBtn")
@@ -271,6 +271,32 @@ if (!isset($_SESSION["user_id"])) {
         });
 
     </script>
+
+
+    <script type="text/javascript">
+       
+            <?php 
+            $curr_data=date("y-m-d");
+            $email=$_SESSION["email"];
+
+            // $query = "SELECT * FROM raspunsuri where vazut=0 and data>='$curr_data'";
+            $query = "SELECT * FROM raspunsuri where email='$email' and vazut=0 and data>='$curr_data'";
+            $query_run = mysqli_query($con, $query);
+            if(mysqli_num_rows($query_run) > 0){
+                // if(1==1){
+                $mesaj='daaa';
+            }else{
+                $mesaj='nuuu';
+               
+            }
+            if($mesaj=='daaa'){
+            echo "
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.success('Ai primit raspuns la o programare!');"; 
+            }
+            ?>
+  
+</script>
 
 </body>
 </html>

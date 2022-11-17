@@ -45,15 +45,15 @@
 
                             <div class="mb-3">
                                 <label for="">FullName</label>
-                                <input type="text" name="fullname" class="form-control" />
+                                <input type="text" name="fullname" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Email</label>
-                                <input type="text" name="email" class="form-control" />
+                                <input type="text" name="email" autocomplete="off" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Password</label>
-                                <input type="password" name="password" class="form-control" />
+                                <input type="password" name="password" autocomplete="off" class="form-control" />
                             </div>
                         </div>
                         <div class="modal-footer">
