@@ -38,7 +38,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 style="text-align:center">Raspuns Programari</h4>
+                            <h4 style="text-align:center">Programari</h4>
                         </div>
                         <div class="card-body">
 
@@ -52,8 +52,8 @@
                                         <th>Data</th>
                                         <th>Interval</th>
                                         <th>Pret Estimativ</th>
-                                        <th>Raspuns</th>
-                                        <!-- <th>Acceptat</th> -->
+                                        <th>Mecanic</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +63,7 @@
                             $curr_data=date("y-m-d");
                                 
 
-                            $query = "SELECT * FROM raspunsuri where email='$email' and data is not null and ora is not null  and raspuns is not null and data>='$curr_data'  order by data,ora";
+                            $query = "SELECT * FROM raspunsuri where email='$email' and data is not null and ora is not null  and raspuns is not null and data>='$curr_data' and acceptat=1 order by data,ora";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -81,16 +81,14 @@
                                         <td><?= $student['data'] ?></td>
                                         <td><?= $student['timeslot'] ?></td>
                                         <td><?= $student['pret'] ?> $</td>
-                                        <td><?= $student['raspuns'] ?></td>
-                                        <!-- <td><?= $student['acceptat'] ?></td> -->
+                                        <td><?= $student['mecanic'] ?></td>
+                                       
 
                                     </tr>
                                     <?php
                                 }
                             }
-                            $a=1;
-                            $query = "UPDATE raspunsuri SET vazut='$a' where email='$ceva'";
-                            $query_run = mysqli_query($con, $query);
+                        
                             ?>
 
                                 </tbody>

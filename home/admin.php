@@ -6,38 +6,6 @@ if (!isset($_SESSION["user_id"])) {
 }
 
 
-// $mysqli = new mysqli('localhost', 'root', 'beatrice1234', 'registration');
-// $stmt = $mysqli->prepare("select * from bookings order by id desc limit 1");
-// $stmt->execute();
-// $result=$stmt->get_result();
-// if($result->num_rows>0){
-//     $row = $result->fetch_assoc();
-//     $email = $row['email'];
-//     $marca = $row['marca'];
-//     $model = $row['model'];
-//     $piesa = $row['piesa'];
-//     $detalii = $row['detalii'];
-//     $data = $row['data'];
-//     $timeslot = $row['timeslot'];
-//     $ora = $row['sort'];
-// }
-// $stmt = $mysqli->prepare("select * from piese where marca = ? AND model=? AND piesa=?");
-// $stmt->bind_param('sss', $marca,$model,$piesa);
-// if($stmt->execute()){
-// $result = $stmt->get_result();
-// if($result->num_rows>0){
-//     $oko=1;
-// }
-// else{
-//     $query = "delete from bookings order by id desc limit 1";
-//     $query_run = mysqli_query($con, $query);
-//     $stmt = $mysqli->prepare("insert into raspunsuri (email,marca,model,piesa,detalii,raspuns,data,timeslot,ora,acceptat) VALUES (?,?,?,?,?,?,?,?,?,?) ");
-//     $opaa="Ne pare rau dar nu avem piesa in stoc. Reveniti peste cateva saptamani.";
-//     $nu=0;
-//     $stmt->bind_param('ssssssssii', $email,$marca,$model,$piesa,$detalii,$opaa,$data,$timeslot,$ora,$nu);
-//     $stmt->execute();
-// }
-// }
 
 ?>
 
@@ -71,6 +39,7 @@ if (!isset($_SESSION["user_id"])) {
                 <a href="../admin/bookings.php"><span></span>Administrare Programari</a>
                 <a href="../piese/students.php"><span></span>Administrare Piese</a>
                 <a href="../utilizatori/students.php"><span></span>Administrare Utilizatori</a>
+                <a href="../admin/rating.php"><span></span>Rating & Feedback</a>
             </div>
         </div>
     </section>
@@ -317,7 +286,7 @@ if (!isset($_SESSION["user_id"])) {
   }
   if($mesaj=='daaa'){
   echo "
-  alertify.set('notifier', 'position', 'top-right');
+  alertify.set('notifier', 'position', 'top-left');
   alertify.success('Ai programari la care nu ai raspuns!');"; 
   }
   ?>

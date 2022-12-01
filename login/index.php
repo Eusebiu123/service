@@ -56,8 +56,11 @@ if (isset($_POST["signin"])) {
     $isadmin=$row['isadmin'];
     if($isadmin==1){
       header("Location: ../home/admin.php");
-    }else{
-      header("Location: ../home/index.php");
+    }else if($_SESSION["email"]=='mecanic1@service'||$_SESSION["email"]=='mecanic2@service'||$_SESSION["email"]=='mecanic3@service'){
+      header("Location: ../home/mecanic.php");
+    }
+    else{
+        header("Location: ../home/index.php");
     }
   } else {
     echo "<script>alert('Login details is incorrect. Please try again.');</script>";

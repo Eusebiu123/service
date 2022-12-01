@@ -124,7 +124,7 @@ if(isset($_GET['student_id']))
 if(isset($_POST['delete_student']))
 {
     $student_id = mysqli_real_escape_string($con, $_POST['student_id']);
-
+    
     $query = "SELECT * FROM bookings WHERE id = '$student_id'";
     $query_run = mysqli_query($con, $query);
     $row  = mysqli_fetch_assoc($query_run);
@@ -161,9 +161,13 @@ if(isset($_POST['acceptat']))
     $student_id = mysqli_real_escape_string($con, $_POST['student_id']);
 
 
-    $query = "UPDATE bookings SET vazut=1 WHERE id = '$student_id'";
+    $query = "UPDATE bookings SET vazut=1  WHERE id = '$student_id'";
     $query_run = mysqli_query($con, $query);
-
+    
+    $query = "SELECT * FROM bookings b join resources r on b.resource_id=r.id  WHERE b.id = '$student_id'";
+    $query_run = mysqli_query($con, $query);
+    $row  = mysqli_fetch_assoc($query_run);
+    $name=$row['name'];
 
     $query = "SELECT * FROM bookings WHERE id = '$student_id'";
     $query_run = mysqli_query($con, $query);
@@ -181,7 +185,7 @@ if(isset($_POST['acceptat']))
     }
     $pret=rand(101,190)*$indice+45;
 
-    $query = "INSERT INTO raspunsuri (email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat,pret) VALUES ('$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',1,$pret)";
+    $query = "INSERT INTO raspunsuri (mecanic,email,marca,model,piesa,detalii,raspuns,data,ora,timeslot,acceptat,pret) VALUES ('$name','$email','$marca','$model','$piesa','$detalii','$raspuns','$data','$ora','$timeslot',1,$pret)";
     $query_run = mysqli_query($con, $query);
 
     $query = "UPDATE piese set cantitate=cantitate-1 where marca='$marca' and model='$model' and piesa='$piesa'";

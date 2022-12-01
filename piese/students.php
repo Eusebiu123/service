@@ -245,7 +245,7 @@
                     $('#studentAddModal').modal('hide');
                     $('#saveStudent')[0].reset();
 
-                    alertify.set('notifier', 'position', 'top-right');
+                    alertify.set('notifier', 'position', 'top-left');
                     alertify.success(res.message);
 
                     $('#myTable').load(location.href + " #myTable");
@@ -309,7 +309,7 @@
 
                     $('#errorMessageUpdate').addClass('d-none');
 
-                    alertify.set('notifier', 'position', 'top-right');
+                    alertify.set('notifier', 'position', 'top-left');
                     alertify.success(res.message);
 
                     $('#studentEditModal').modal('hide');
@@ -369,7 +369,7 @@
 
                         alert(res.message);
                     } else {
-                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.set('notifier', 'position', 'top-left');
                         alertify.success(res.message);
 
                         $('#myTable').load(location.href + " #myTable");

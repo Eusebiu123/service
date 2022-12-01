@@ -22,7 +22,7 @@
         <div id="sideNav">
             <nav>
                 <ul>
-                    <li><a href="../home/index.php">HOME</a></li>
+                    <li><a href="../home/mecanic.php">HOME</a></li>
                     <li><a href="../login/logout.php">LOG OUT</a></li>
 
                 </ul>
@@ -38,7 +38,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 style="text-align:center">Raspuns Programari</h4>
+                            <h4 style="text-align:center">Programarile de astazi</h4>
                         </div>
                         <div class="card-body">
 
@@ -52,7 +52,7 @@
                                         <th>Data</th>
                                         <th>Interval</th>
                                         <th>Pret Estimativ</th>
-                                        <th>Raspuns</th>
+                                        
                                         <!-- <th>Acceptat</th> -->
                                     </tr>
                                 </thead>
@@ -63,7 +63,10 @@
                             $curr_data=date("y-m-d");
                                 
 
-                            $query = "SELECT * FROM raspunsuri where email='$email' and data is not null and ora is not null  and raspuns is not null and data>='$curr_data'  order by data,ora";
+                            $query = "SELECT * FROM raspunsuri s join resources r  
+                                      on s.mecanic=r.name
+                                      where s.data>='$curr_data' and s.acceptat=1 and r.email='$email'
+                                      order by s.data,s.ora";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -81,16 +84,14 @@
                                         <td><?= $student['data'] ?></td>
                                         <td><?= $student['timeslot'] ?></td>
                                         <td><?= $student['pret'] ?> $</td>
-                                        <td><?= $student['raspuns'] ?></td>
-                                        <!-- <td><?= $student['acceptat'] ?></td> -->
+                                       
+                                        
 
                                     </tr>
                                     <?php
                                 }
                             }
-                            $a=1;
-                            $query = "UPDATE raspunsuri SET vazut='$a' where email='$ceva'";
-                            $query_run = mysqli_query($con, $query);
+                            
                             ?>
 
                                 </tbody>
